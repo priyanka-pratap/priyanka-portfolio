@@ -1,8 +1,4 @@
 {
   "buildCommand": "pnpm build",
-  "outputDirectory": "dist/public",
-  "framework": "vite",
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "outputDirectory": "dist/public"
 }
