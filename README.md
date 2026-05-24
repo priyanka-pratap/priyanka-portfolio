@@ -1,6 +1,8 @@
-# Web App Template (Static Frontend)
+# Priyanka's Premium Developer Portfolio
 
-Pure React 19 + Tailwind 4 template with shadcn/ui baked in. **Use this README as the checklist for shipping static experiences.**
+A stunning dark-mode developer portfolio website with vibrant neon accents, animated backgrounds, and modern design. Built with React 19, TypeScript, and Tailwind CSS.
+
+**Created by Priyanka Abhishek Pratap Singh**
 
 > **Note:** This template includes a minimal `shared/` and `server/` directory with placeholder types to support imported templates. These are just compatibility placeholders - web-static remains a true static-only template without API functionality.
 
