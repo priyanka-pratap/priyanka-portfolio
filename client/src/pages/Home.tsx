@@ -163,19 +163,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Holographic Avatar */}
+            {/* Right: Animated Avatar */}
             <div className="flex justify-center items-center">
-              <div className="relative w-full max-w-md">
-                {/* Glow effect background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-purple-500/20 rounded-2xl blur-3xl animate-pulse" />
-                {/* Avatar Image */}
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663486619921/RPgjmj4nfkiFhhyMBNDB8X/priyanka-avatar-hologram-dGyvfVSsTzyBvHiASwA2Wd.webp"
-                  alt="Priyanka - Holographic Avatar"
-                  className="relative z-10 w-full h-auto rounded-2xl shadow-2xl shadow-accent/30 hover:shadow-accent/50 transition-all duration-500 hover:scale-105 transform"
-                />
-                {/* Animated border */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-accent/30 animate-pulse" style={{ animationDuration: "3s" }} />
+              <div className="relative w-full max-w-md h-96">
+                {/* Floating animation container */}
+                <div className="absolute inset-0 flex items-center justify-center animate-float">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663486619921/RPgjmj4nfkiFhhyMBNDB8X/priyanka-avatar-animated-QNqyHuXs9xfe66cBC4MUZF.webp"
+                    alt="Priyanka - Animated Avatar"
+                    className="w-full h-full object-contain drop-shadow-2xl drop-shadow-accent/30 hover:drop-shadow-accent/50 transition-all duration-500"
+                  />
+                </div>
               </div>
             </div>
           </div>
