@@ -141,23 +141,14 @@ export default function Home() {
           }}
         />
 
-        <div className="container relative z-10 max-w-4xl">
-          <div className="space-y-8">
-            {/* Animated Avatar */}
-            <div className="flex justify-center mb-8">
-              <div className="relative w-24 h-24">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-purple-500 rounded-full animate-spin" style={{ animationDuration: "3s" }} />
-                <div className="absolute inset-1 bg-background rounded-full flex items-center justify-center">
-                  <Sparkles className="w-12 h-12 text-accent animate-pulse" />
-                </div>
-              </div>
-            </div>
-
+        <div className="container relative z-10 max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
             <div className="space-y-6">
               <h1 className="text-5xl md:text-7xl font-black leading-tight">
                 Hi, I'm <span className="neon-text">Priyanka</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
+              <p className="text-xl md:text-2xl text-muted-foreground">
                 I build practical web & mobile applications that solve real-world problems with precision and elegance.
               </p>
 
@@ -169,6 +160,22 @@ export default function Home() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </a>
+              </div>
+            </div>
+
+            {/* Right: Holographic Avatar */}
+            <div className="flex justify-center items-center">
+              <div className="relative w-full max-w-md">
+                {/* Glow effect background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-purple-500/20 rounded-2xl blur-3xl animate-pulse" />
+                {/* Avatar Image */}
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663486619921/RPgjmj4nfkiFhhyMBNDB8X/priyanka-avatar-hologram-dGyvfVSsTzyBvHiASwA2Wd.webp"
+                  alt="Priyanka - Holographic Avatar"
+                  className="relative z-10 w-full h-auto rounded-2xl shadow-2xl shadow-accent/30 hover:shadow-accent/50 transition-all duration-500 hover:scale-105 transform"
+                />
+                {/* Animated border */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-accent/30 animate-pulse" style={{ animationDuration: "3s" }} />
               </div>
             </div>
           </div>
