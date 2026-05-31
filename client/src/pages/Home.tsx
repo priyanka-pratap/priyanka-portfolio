@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Mail, Github, ExternalLink, Code2, Zap, ArrowRight, Sparkles } from "lucide-react";
+import { Mail, Github, ExternalLink, Code2, Zap, ArrowRight, Sparkles, Database, Smartphone, Wrench, Rocket } from "lucide-react";
 import { useState, useEffect } from "react";
 
 /**
@@ -11,9 +10,45 @@ import { useState, useEffect } from "react";
  * - Dashed border elements and floating geometric shapes
  */
 
+// Skill Icon Mapping
+const skillIcons: { [key: string]: React.ReactNode } = {
+  // Frontend
+  "React": <Code2 className="w-5 h-5" />,
+  "TypeScript": <Code2 className="w-5 h-5" />,
+  "Tailwind CSS": <Zap className="w-5 h-5" />,
+  "JavaScript": <Code2 className="w-5 h-5" />,
+  
+  // Backend
+  "Node.js": <Rocket className="w-5 h-5" />,
+  "Python": <Code2 className="w-5 h-5" />,
+  "Express": <Rocket className="w-5 h-5" />,
+  "REST APIs": <Zap className="w-5 h-5" />,
+  
+  // Database
+  "MongoDB": <Database className="w-5 h-5" />,
+  "PostgreSQL": <Database className="w-5 h-5" />,
+  "Firebase": <Database className="w-5 h-5" />,
+  
+  // Tools
+  "Git": <Wrench className="w-5 h-5" />,
+  "GitHub": <Wrench className="w-5 h-5" />,
+  "VS Code": <Wrench className="w-5 h-5" />,
+  "Docker": <Wrench className="w-5 h-5" />,
+  
+  // Mobile
+  "React Native": <Smartphone className="w-5 h-5" />,
+  "Mobile UI/UX": <Smartphone className="w-5 h-5" />,
+  
+  // Other
+  "Data Visualization": <Zap className="w-5 h-5" />,
+  "WebRTC": <Rocket className="w-5 h-5" />,
+  "Encryption": <Wrench className="w-5 h-5" />,
+};
+
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -68,22 +103,28 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       {/* Animated background elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
       </div>
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container py-4 flex justify-between items-center relative z-10">
-          <div className="text-2xl font-bold neon-text">PAP</div>
+          <div className="text-2xl font-bold neon-text flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-purple-500 flex items-center justify-center animate-pulse">
+              <Code2 className="w-4 h-4 text-white" />
+            </div>
+            PAP
+          </div>
           <div className="flex gap-8">
-            <a href="#projects" className="text-sm hover:text-accent transition-colors duration-300">
+            <a href="#projects" className="text-sm hover:text-accent transition-colors duration-300 hover:scale-110 transform">
               Projects
             </a>
-            <a href="#skills" className="text-sm hover:text-accent transition-colors duration-300">
+            <a href="#skills" className="text-sm hover:text-accent transition-colors duration-300 hover:scale-110 transform">
               Skills
             </a>
-            <a href="#contact" className="text-sm hover:text-accent transition-colors duration-300">
+            <a href="#contact" className="text-sm hover:text-accent transition-colors duration-300 hover:scale-110 transform">
               Contact
             </a>
           </div>
@@ -99,54 +140,35 @@ export default function Home() {
               "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663486619921/RPgjmj4nfkiFhhyMBNDB8X/premium-hero-bg-gLWChJ3FjSezPQFAUe38bd.webp')",
           }}
         />
-        <div className="container relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left: Content */}
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="space-y-6">
-              <div className="inline-block">
-                <span className="text-xs font-bold px-4 py-2 rounded-full bg-accent/10 text-accent border border-accent/30 flex items-center gap-2">
-                  <Sparkles className="w-3 h-3" /> Premium Developer
-                </span>
-              </div>
 
-              <h1 className="text-6xl md:text-7xl font-black leading-tight">
+        <div className="container relative z-10 max-w-4xl">
+          <div className="space-y-8">
+            {/* Animated Avatar */}
+            <div className="flex justify-center mb-8">
+              <div className="relative w-24 h-24">
+                <div className="absolute inset-0 bg-gradient-to-r from-accent to-purple-500 rounded-full animate-spin" style={{ animationDuration: "3s" }} />
+                <div className="absolute inset-1 bg-background rounded-full flex items-center justify-center">
+                  <Sparkles className="w-12 h-12 text-accent animate-pulse" />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight">
                 Hi, I'm <span className="neon-text">Priyanka</span>
               </h1>
-
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-                I build practical web and mobile applications that solve real-world problems. Specialized in trading
-                analytics, secure communications, and AI-powered solutions.
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
+                I build practical web & mobile applications that solve real-world problems with precision and elegance.
               </p>
-            </div>
 
-            <div className="flex gap-4 pt-4">
-              <Button
-                onClick={() => {
-                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 font-bold flex items-center gap-2 glow-box"
-              >
-                View My Work
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-accent text-accent hover:bg-accent/10 px-8 py-3 font-bold"
-              >
-                Download CV
-              </Button>
-            </div>
-          </div>
-
-          {/* Right: Visual Element */}
-          <div className="hidden md:flex justify-center items-center">
-            <div className="relative w-full max-w-sm h-96">
-              <div className="absolute inset-0 rounded-lg border-2 border-dashed border-accent/50 bg-card/30 backdrop-blur-sm flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent" />
-                <div className="relative text-center space-y-4">
-                  <Code2 className="w-20 h-20 text-accent mx-auto animate-pulse" />
-                  <p className="text-sm text-muted-foreground">Building with precision & creativity</p>
-                </div>
+              {/* CTA Button with Animation */}
+              <div className="flex gap-4 pt-8">
+                <a href="#projects" className="group">
+                  <button className="glow-box bg-accent text-accent-foreground px-8 py-4 rounded-lg font-bold flex items-center gap-2 hover:scale-105 transform transition-all duration-300">
+                    View My Work
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -154,52 +176,35 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 border-t border-border relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage:
-              "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663486619921/RPgjmj4nfkiFhhyMBNDB8X/animated-accent-bg-7u5pTdYCu2ThBpTZ8tasuP.webp')",
-          }}
-        />
-
-        <div className="container space-y-16 relative z-10">
+      <section id="projects" className="py-24 border-t border-border">
+        <div className="container space-y-16">
           <div className="space-y-4">
             <h2 className="text-5xl font-black">Featured Projects</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-accent to-purple-500 rounded-full" />
           </div>
 
           <div className="space-y-8">
-            {projects.map((project, idx) => (
+            {projects.map((project, index) => (
               <div
                 key={project.id}
-                onMouseEnter={() => setHoveredProject(idx)}
+                onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className="group relative"
+                className="group"
               >
-                <div className="bg-card border border-border rounded-xl p-8 hover:border-accent/50 transition-all duration-500 hover:shadow-lg hover:shadow-accent/20">
-                  {/* Status Badge */}
-                  {project.status && (
-                    <div className="inline-block mb-4">
-                      <span className="text-xs font-bold px-4 py-2 rounded-full bg-accent/10 text-accent border border-accent/30">
-                        {project.status}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Featured Badge */}
-                  {project.featured && !project.status && (
-                    <div className="inline-block mb-4">
-                      <span className="text-xs font-bold px-4 py-2 rounded-full bg-accent/10 text-accent border border-accent/30 flex items-center gap-2">
-                        <Zap className="w-3 h-3" /> Featured
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className={`bg-card rounded-lg border-2 border-dashed transition-all duration-500 overflow-hidden ${
+                  hoveredProject === project.id ? "border-accent shadow-lg shadow-accent/20" : "border-border"
+                }`}>
+                  <div className="p-8 md:p-12 grid md:grid-cols-3 gap-8 items-center">
                     {/* Project Info */}
                     <div className="md:col-span-2 space-y-4">
-                      <h3 className="text-3xl font-bold">{project.title}</h3>
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-3xl font-bold">{project.title}</h3>
+                        {project.status && (
+                          <span className="text-xs px-3 py-1 rounded-full bg-accent/20 text-accent font-bold animate-pulse">
+                            {project.status}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-muted-foreground leading-relaxed">{project.description}</p>
 
                       {/* Tech Stack */}
@@ -207,7 +212,7 @@ export default function Home() {
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent font-bold border border-accent/30"
+                            className="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent font-bold border border-accent/30 hover:bg-accent/20 transition-colors"
                           >
                             {tech}
                           </span>
@@ -218,9 +223,13 @@ export default function Home() {
                     {/* Project Visual */}
                     <div className="flex items-center justify-center">
                       <div className="relative w-full h-48 rounded-lg border-2 border-dashed border-accent/50 bg-gradient-to-br from-accent/5 to-transparent flex items-center justify-center overflow-hidden group/card">
-                        <div className="absolute inset-0 opacity-30" />
+                        <div className={`absolute inset-0 opacity-0 group-hover/card:opacity-30 transition-opacity duration-300 ${
+                          hoveredProject === project.id ? "bg-accent/10" : ""
+                        }`} />
                         <div className="relative text-center">
-                          <ExternalLink className="w-12 h-12 text-accent/50 mx-auto mb-2 group-hover/card:text-accent transition-colors" />
+                          <ExternalLink className={`w-12 h-12 mx-auto mb-2 transition-all duration-300 ${
+                            hoveredProject === project.id ? "text-accent animate-bounce" : "text-accent/50"
+                          }`} />
                           <p className="text-xs text-muted-foreground">Project Preview</p>
                         </div>
                       </div>
@@ -233,7 +242,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills Section with Icons and Animations */}
       <section id="skills" className="py-24 border-t border-border bg-card/50">
         <div className="container space-y-16">
           <div className="space-y-4">
@@ -245,14 +254,39 @@ export default function Home() {
             {skills.map((skillGroup) => (
               <div
                 key={skillGroup.category}
-                className="bg-background rounded-lg p-6 border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
+                onMouseEnter={() => setHoveredSkill(skillGroup.category)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                className={`bg-background rounded-lg p-6 border transition-all duration-300 transform hover:scale-105 ${
+                  hoveredSkill === skillGroup.category
+                    ? "border-accent shadow-lg shadow-accent/20 -translate-y-2"
+                    : "border-border hover:border-accent/50"
+                }`}
               >
-                <h3 className="text-lg font-bold text-accent mb-4">{skillGroup.category}</h3>
+                <h3 className="text-lg font-bold text-accent mb-6 flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-purple-500 flex items-center justify-center">
+                    {skillGroup.category === "Frontend" && <Code2 className="w-4 h-4 text-white" />}
+                    {skillGroup.category === "Backend" && <Rocket className="w-4 h-4 text-white" />}
+                    {skillGroup.category === "Database" && <Database className="w-4 h-4 text-white" />}
+                    {skillGroup.category === "Tools" && <Wrench className="w-4 h-4 text-white" />}
+                    {skillGroup.category === "Mobile" && <Smartphone className="w-4 h-4 text-white" />}
+                    {skillGroup.category === "Other" && <Zap className="w-4 h-4 text-white" />}
+                  </div>
+                  {skillGroup.category}
+                </h3>
                 <div className="space-y-3">
-                  {skillGroup.items.map((skill) => (
-                    <div key={skill} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                      <span className="text-sm text-foreground">{skill}</span>
+                  {skillGroup.items.map((skill, idx) => (
+                    <div
+                      key={skill}
+                      className="flex items-center gap-3 group/skill hover:translate-x-2 transition-transform duration-300"
+                      style={{ animationDelay: `${idx * 50}ms` }}
+                    >
+                      <div className="text-accent group-hover/skill:animate-spin transition-all duration-300">
+                        {skillIcons[skill] || <Code2 className="w-5 h-5" />}
+                      </div>
+                      <span className="text-sm text-foreground group-hover/skill:text-accent transition-colors duration-300">
+                        {skill}
+                      </span>
+                      <div className="w-0 h-0.5 bg-accent group-hover/skill:w-8 transition-all duration-300" />
                     </div>
                   ))}
                 </div>
@@ -276,6 +310,16 @@ export default function Home() {
           <div className="space-y-4">
             <h2 className="text-5xl font-black">About Me</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-accent to-purple-500 rounded-full" />
+          </div>
+
+          {/* Animated avatar in about section */}
+          <div className="flex justify-center mb-8">
+            <div className="relative w-20 h-20">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent to-purple-500 rounded-full animate-pulse" />
+              <div className="absolute inset-1 bg-background rounded-full flex items-center justify-center">
+                <Code2 className="w-10 h-10 text-accent animate-bounce" />
+              </div>
+            </div>
           </div>
 
           <div className="space-y-6 text-muted-foreground leading-relaxed">
@@ -303,6 +347,16 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-24 border-t border-border bg-card/50">
         <div className="container max-w-2xl text-center space-y-12">
+          {/* Animated contact avatar */}
+          <div className="flex justify-center">
+            <div className="relative w-24 h-24">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent via-purple-500 to-accent rounded-full animate-spin" style={{ animationDuration: "4s" }} />
+              <div className="absolute inset-2 bg-background rounded-full flex items-center justify-center">
+                <Mail className="w-10 h-10 text-accent animate-pulse" />
+              </div>
+            </div>
+          </div>
+
           <div className="space-y-4">
             <h2 className="text-5xl font-black">Let's Connect</h2>
             <p className="text-muted-foreground">
@@ -312,19 +366,16 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="mailto:abhishekpratapsinghpriyanka@gmail.com">
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 font-bold flex items-center gap-2 glow-box">
+              <button className="glow-box bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-3 font-bold flex items-center gap-2 rounded-lg transition-all duration-300 hover:scale-110 transform">
                 <Mail className="w-4 h-4" />
                 Email Me
-              </Button>
+              </button>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="outline"
-                className="border-accent text-accent hover:bg-accent/10 px-8 py-3 font-bold flex items-center gap-2"
-              >
+            <a href="https://github.com/priyanka-pratap" target="_blank" rel="noopener noreferrer">
+              <button className="border-2 border-accent text-accent hover:bg-accent/10 px-8 py-3 font-bold flex items-center gap-2 rounded-lg transition-all duration-300 hover:scale-110 transform">
                 <Github className="w-4 h-4" />
                 GitHub
-              </Button>
+              </button>
             </a>
           </div>
 
